@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="css/frameworks/nes.css" rel="stylesheet"/>
+    <link href="css/welcome-style.css" rel="stylesheet"/>
+    <script src="js/FontAwesome.js"></script>
+    <style>
+        .Blink {
+            color: red;
+            animation: blinker 1.0s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+        }
+        @keyframes blinker {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+    <title>Welcome</title>
+</head>
+<body>
+<div class="nes-container with-title">
+    <h1 class="title nes-text is-success">Greeting Page</h1>
+    <div class="nes-container is-rounded is-dark">
+        <h2 class="nes-text is-danger" th:text="'You are welcome, Mr. '+${name}+'.'"></h2>
+    </div>
+    <br/>
+    <br/>
+    <div class="nes-container with-title ">
+        <p class="title nes-text is-error"><i class="fas fa-circle Blink"></i>  Breaking News</p>
+        <div class="nes-balloon from-left">
+            <div class="lists">
+                <ul class="nes-list is-circle">
+                    <li>
+                        <p class="nes-text">
+                            <i class="nes-icon is-small star"></i> Wizard of the Day <i class="nes-icon is-small star"></i> -
+                            <span class="nes-text is-success" th:text="${wizard}"></span>!
+                        </p>
+                    </li>
+                    <li>
+                        <p class="nes-text">The youngest magician only  <span class="nes-text is-primary" th:text="${minAge}"></span> years old, when the oldest - <span class="nes-text is-error" th:text="${maxAge}"></span>!</p>
+                    </li>
+                    <li>
+                        <p class="nes-text">Don't know what spell to learn? What about "<span class="nes-text is-warning" th:text="${spell}"></span>"?</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <i class="nes-octocat animate is-large"></i>
+    </div>
+
+</div>
+</body>
+</html>
