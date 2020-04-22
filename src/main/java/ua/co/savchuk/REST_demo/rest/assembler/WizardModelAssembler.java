@@ -23,20 +23,7 @@ public class WizardModelAssembler implements RepresentationModelAssembler<Wizard
                 linkTo(
                         methodOn(WizardRestController.class)
                                 .getWizards(wizard.getName()))
-                        .withRel("wizards"),
-
-                linkTo(
-                        methodOn(WizardRestController.class)
-                                .replaceWizard(new Wizard(), wizard.getId()))
-                        .withRel("put"),
-
-                linkTo(
-                        methodOn(WizardRestController.class)
-                                .patchWizard(wizard.getId(), "", ""))
-                        .withRel("patch"),
-
-                linkTo(WizardRestController.class)
-                        .withRel("delete")
-                        .withHref("http://localhost:8080/api/wizards/" + wizard.getId() + "/delete"));
+                        .withRel("wizards")
+        );
     }
 }
