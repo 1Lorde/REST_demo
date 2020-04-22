@@ -35,6 +35,7 @@ public class WizardRestController {
             throw new WizardNotFoundException(filter);
         return result;
     }
+
     @GetMapping("api/wizards/{id}")
     public EntityModel<Wizard> getWizardById(@PathVariable Long id) {
         return assembler.toModel(
@@ -49,7 +50,7 @@ public class WizardRestController {
         wizardsService.save(newWizard);
     }
 
-    @PutMapping("/api/wizards/{id}/update")
+    @PutMapping("/api/wizards/{id}")
     public Wizard replaceWizard(@RequestBody Wizard newWizard, @PathVariable Long id) {
         return wizardsService.findById(id)
                 .map(wizard -> {
@@ -61,7 +62,7 @@ public class WizardRestController {
                 .orElseGet(() -> wizardsService.save(newWizard));
     }
 
-    @PatchMapping("/api/wizards/{id}/edit")
+    @PatchMapping("/api/wizards/{id}")
     public Wizard patchWizard(@PathVariable Long id,
                               @RequestParam(value = "name", defaultValue = "") String name,
                               @RequestParam(value = "age", defaultValue = "0") String age) {
@@ -74,14 +75,9 @@ public class WizardRestController {
                 .orElseThrow( () -> new WizardNotFoundException(id) );
     }
 
-    @DeleteMapping("/api/wizards/{id}/delete")
+    @DeleteMapping("/api/wizards/{id}")
     public void deleteWizardById(@PathVariable Long id) {
         wizardsService.deleteById(id);
-    }
-
-    @GetMapping("api/spells")
-    public EnumSet<Spell> getSpells() {
-        return EnumSet.allOf(Spell.class);
     }
 
 }
